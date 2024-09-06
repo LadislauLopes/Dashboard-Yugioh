@@ -22,7 +22,7 @@ def tela_usuario_nao_pagante(id):
     with coluna2:
         st.image(r'src/logo.png', width=350)
     with coluna3:
-        st.markdown('<h1>Bem vindo</h1>', unsafe_allow_html=True)
+        st.markdown('<h1>Bem-vindo</h1>', unsafe_allow_html=True)
         
 
 
