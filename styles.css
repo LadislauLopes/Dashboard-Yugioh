@@ -1,0 +1,18 @@
+
+.dataframe-container table {
+    width: 100%;
+}
+
+.dataframe-container th:first-child, .dataframe-container td:first-child {
+    width: 70%;
+}
+
+.dataframe-container th:last-child, .dataframe-container td:last-child {
+    width: 30%;
+}
+
+
+.dataframe-container th, .dataframe-container td {
+    text-align: center; 
+    vertical-align: middle; 
+}
