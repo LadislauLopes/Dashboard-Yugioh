@@ -4,7 +4,7 @@ import plotly.express as px
 from graficos import *
 from botoes import redes_socias
 from dados import obter_media_jogadores_por_edicao, calcular_valores_e_quantidade_torneios,obter_nome_pessoa
-from streamlit_modal import Modal
+
 
 def tela_usuario_nao_pagante(id):
     # Dashboard
