@@ -19,7 +19,7 @@ def tela_usuario_nao_pagante(id):
         st.markdown('<p style="font-size:15px;">Develop by Ladislau Lopes</p>', unsafe_allow_html=True)
         redes_socias()
     with coluna2:
-        st.image(r'src\logo.png', width=350)
+        st.image(r'src/logo.png', width=350)
     with coluna3:
         st.markdown('<h1>Bem-vindo</h1>', unsafe_allow_html=True)
         st.warning('Você está no modo gratuito. Caso deseje assinar para ter acesso a novas funcionalidades, entre em contato com o desenvolvedor.')
