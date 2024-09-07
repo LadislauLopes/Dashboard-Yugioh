@@ -418,3 +418,43 @@ def obter_decks_utilizados(id_pessoa, id_edicao=None):
 
 
 
+def obter_decks_top(id_edicao=None, top=8):
+    """
+    Obtém os decks mais utilizados no top (ex: top 2, 4, 6, 8) de uma edição específica. 
+    Se nenhum ID de edição for passado, utiliza o maior ID de edição disponível.
+    
+    :param id_edicao: (Opcional) ID da edição. Se não fornecido, será utilizado o maior ID de edição disponível.
+    :param top: Quantidade de jogadores no top a ser considerado (ex: 2, 4, 8). O padrão é 8.
+    :return: DataFrame com o nome dos decks e a quantidade de vezes que foram usados no top.
+    """
+    if id_edicao is None:
+        id_edicao = obter_maior_id_edicao()
+    
+    query = """
+    SELECT
+        d.nome_do_deck AS Deck,
+        COUNT(*) AS Quantidade
+    FROM
+        participante p
+    JOIN deck d ON p.id_deck = d.id_deck
+    JOIN torneio t ON p.id_torneio = t.id_torneio
+    WHERE
+        t.id_edicao = %s
+        AND p.posicao <= %s  -- Filtra apenas jogadores que ficaram nas primeiras posições (top)
+    GROUP BY
+        d.nome_do_deck
+    ORDER BY
+        Quantidade DESC;
+    """
+    
+    conexao = conectar_ao_banco()
+    
+    try:
+        with conexao.cursor() as cursor:
+            cursor.execute(query, (id_edicao, top))
+            resultado = cursor.fetchall()
+            df = pd.DataFrame(resultado)
+    finally:
+        conexao.close()
+    
+    return df

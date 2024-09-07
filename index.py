@@ -58,6 +58,7 @@ def tela_login():
 
 def main():
     # Verifica se o usuário está logado
+    #st.set_page_config('Liga Yugioh Acre')
     if 'logged_in' in st.session_state and st.session_state.logged_in:
         usuario_info = st.session_state.usuario_info
         if usuario_info['pagante']:
@@ -66,6 +67,7 @@ def main():
             tela_usuario_nao_pagante(st.session_state.id_usuario)
     else:
         tela_login()
+        
 
 if __name__ == "__main__":
     main()
