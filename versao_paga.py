@@ -78,7 +78,8 @@ def tela_usuario_pagante(id):
                     st.markdown("<h2>Top Decks Frequentes</h2>", unsafe_allow_html=True)
                 
                     # Seleção de filtro para o top
-                    top_n = st.number_input("Selecione o Top N para filtrar",1,16)
+                    top_n = st.number_input("Selecione o Top N para filtrar", 2)
+
 
                     # Obtenha os dados dos decks mais frequentes no top N
                     df_decks_top = obter_decks_top(top=top_n)
