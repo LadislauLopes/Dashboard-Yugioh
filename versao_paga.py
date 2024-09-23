@@ -90,4 +90,3 @@ def tela_usuario_pagante(id):
 
                 with coluna2:
                     st.warning('Em breve mais adições')
-
