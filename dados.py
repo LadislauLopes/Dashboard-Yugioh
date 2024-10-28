@@ -91,9 +91,16 @@ def obter_pontuacoes_dos_jogadores():
             cursor.execute(query)
             resultado = cursor.fetchall()
             df = pd.DataFrame(resultado)
+            
+            # Verifica e remove o jogador "bye"
+            if "Jogador" in df.columns:
+                df = df[df["Jogador"].str.lower() != "bye"]
+            else:
+                print("A coluna 'Jogador' não foi encontrada no DataFrame.")
+
     finally:
         conexao.close()
-    
+
     return df
 
 def obter_quantidade_decks_por_edicao(id_edicao=None):
@@ -127,6 +134,7 @@ def obter_quantidade_decks_por_edicao(id_edicao=None):
             cursor.execute(query, (id_edicao,))
             resultado = cursor.fetchall()
             df = pd.DataFrame(resultado)
+            df = df[df["Deck"].str.lower() != "bye"]
     finally:
         conexao.close()
     
